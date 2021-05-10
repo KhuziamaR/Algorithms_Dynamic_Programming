@@ -11,4 +11,22 @@ def grid_traveler(m,n,memo=dict()):
     memo[key] = grid_traveler(m-1,n,memo) + grid_traveler(m,n-1,memo)
     return memo[key]
 
+# print(grid_traveler(18,18))
+
+def grid_traveler_tab(m,n):
+    table = [(m+1)*[0] for i in range(n+1)]
+    table[1][1] = 1
+    for i in range(m+1):
+        for j in range(n+1):
+            current = table[i][j]
+            if ( j+1 <= n):
+                table[i][j+1] += current
+            if (i+1 <= m):
+                table[i+1][j] += current
+    return table[m,n]
+
+
 print(grid_traveler(18,18))
+
+    
+# print([4*[0] for i in range(4)])

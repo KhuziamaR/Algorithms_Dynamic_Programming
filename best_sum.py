@@ -10,8 +10,7 @@ def best_sum(target_sum, arr,memo = dict()):
         remainder = target_sum - num
         remainder_combination = best_sum(remainder,arr,memo)
         if remainder_combination is not None:
-            remainder_combination.append(num)
-            combination = remainder_combination
+            combination = [*remainder_combination, num]
             if shortest_combination == None or len(combination) < len(shortest_combination):
                 shortest_combination = combination
     memo[target_sum] = shortest_combination

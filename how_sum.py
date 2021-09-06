@@ -1,13 +1,15 @@
 def how_sum(target_sum,arr, memo = dict()):
+    if target_sum in memo:
+        return memo[target_sum]
     if target_sum == 0:
         return []
     if target_sum < 0: 
         return None
+   
     for num in arr:
         result = how_sum(target_sum-num,arr, memo)
         if result != None:
-            result.append(num)
-            memo[target_sum] = result
+            memo[target_sum] = [*result, num]
             return memo[target_sum]
     memo[target_sum] = None
     return None
